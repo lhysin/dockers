@@ -1,0 +1,22 @@
+mysql:
+  #image: jsurf/rpi-mariadb
+  build: ./mysql
+  name: rpi3-mariadb10
+  restart: unless-stopped
+  ports:
+    - "3306:3306"
+  volumes:
+    - "/var/lib/docker-volume/mysql:/var/lib/mysql"
+  environment:
+    - "MYSQL_ROOT_PASSWORD=root"
+
+redis:
+  #image: arm32v7/redis
+  build: ./redis
+  name: rpi3-redis
+  restart: unless-stopped
+  command: redis --appendonly yes --maxmemory 256mb --tcp-backlog 128 --requirepass lhysin
+  ports:
+    - "6379:6379"
+  volumes:
+    - "/var/lib/docker-volume/redis/data:/data"
