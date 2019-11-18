@@ -15,8 +15,19 @@ redis:
   build: ./redis
   container_name: rpi3-redis
   restart: unless-stopped
-  command: redis --appendonly yes --maxmemory 256mb --tcp-backlog 128 --requirepass lhysin
+  command: redis-server --appendonly yes --maxmemory 256mb --tcp-backlog 128 --requirepass lhysin
   ports:
     - "6379:6379"
   volumes:
     - "/var/lib/docker-volume/redis/data:/data"
+
+redis:
+  build: ./mongodb
+  container_name: rpi3-mongodb3
+  restart: unless-stopped
+  command: mongod --auth
+  ports:
+    - "27017:27017"
+  volumes:
+    - "/var/lib/docker-volume/mongodb/data/db:/data/db"
+    - "/var/lib/docker-volume/mongodb/data/configdb:/data/configdb"
