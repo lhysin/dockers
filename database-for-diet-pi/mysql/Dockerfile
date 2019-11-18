@@ -1,9 +1,9 @@
 FROM jsurf/rpi-mariadb
 
-#ADD init.sql /docker-entrypoint-initdb.d/
-#RUN chown -R mysql:mysql /docker-entrypoint-initdb.d/
+ADD init.sql /docker-entrypoint-initdb.d/
+RUN chown -R mysql:mysql /docker-entrypoint-initdb.d/
 
-#CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 
 #COPY ./docker-entrypoint.sh /
 #RUN ["chmod", "+x", "/docker-entrypoint.sh"]
