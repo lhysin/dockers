@@ -11,21 +11,21 @@ ADD mongodb_stretch_3_0_14_core.tar.gz /usr/bin/
 ADD mongodb_stretch_3_0_14_tools.tar.gz /usr/bin/
 
 RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
-RUN mkdir -p \
-    /data/db \
-    /data/configdb \
-    /var/log/mongodb \
-&& chown -R mongodb:mongodb \
-    /usr/bin/mongo* \
-    /data/db \
-    /data/configdb \
-    /var/log/mongodb
+#RUN mkdir -p \
+#    /data/db \
+#    /data/configdb \
+#    /var/log/mongodb \
+#&& chown -R mongodb:mongodb \
+#    /usr/bin/mongo* \
+#    /data/db \
+#    /data/configdb \
+#    /var/log/mongodb
 
 COPY ./docker-entrypoint.sh /
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 # Define mountable directories
-VOLUME /data/db /data/configdb
+#VOLUME /data/db /data/configdb
 
 # Define working directory
 WORKDIR /data
@@ -34,7 +34,7 @@ WORKDIR /data
 # - 27017: process
 # - 28017: http
 EXPOSE 27017
-EXPOSE 28017
+#EXPOSE 28017
 
 #ENTRYPOINT ["/sbin/tini", "--"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
