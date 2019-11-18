@@ -12,16 +12,16 @@ mysql:
 #    - "MYSQL_PASSWORD=lhysin"
     - "MYSQL_ROOT_PASSWORD=root"
 
-#redis:
-#  #image: arm32v7/redis
-#  build: ./redis
-#  container_name: rpi3-redis
-#  restart: unless-stopped
-#  command: redis-server --appendonly yes --maxmemory 256mb --tcp-backlog 128 --requirepass lhysin
-#  ports:
-#    - "6379:6379"
-#  volumes:
-#    - "/var/lib/docker-volume/redis/data:/data"
+redis:
+  #image: arm32v7/redis
+  build: ./redis
+  container_name: rpi3-redis
+  restart: unless-stopped
+  command: redis-server --appendonly yes --maxmemory 256mb --tcp-backlog 128 --requirepass lhysin
+  ports:
+    - "6379:6379"
+  volumes:
+    - "/var/lib/docker-volume/redis/data:/data"
 
 #mongodb:
 #  build: ./mongodb
