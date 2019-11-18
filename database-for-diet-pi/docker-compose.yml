@@ -1,5 +1,5 @@
 mysql:
-  image: lhysin/rpi-mariadb
+  image: lhysin-rpi-mariadb
   build: ./mysql
   container_name: rpi3-mariadb10
   restart: unless-stopped
